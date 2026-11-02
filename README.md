@@ -1,9 +1,11 @@
-# riishavguptaa.com
+# riishavrg.github.io
 
 Personal academic website for Rishav Gupta, a Ph.D. student in Computer Science at the
 University of Maryland, Baltimore County (UMBC), researching smartphone-based cardiovascular
 health sensing. Plain HTML5 and CSS3 — no framework, no build step — hosted on GitHub Pages at
-[riishavguptaa.com](https://riishavguptaa.com). Pushing to `main` redeploys in about a minute.
+[riishavrg.github.io](https://riishavrg.github.io). Pushing to `main` redeploys in about a minute.
+(Until 15 Nov 2026 the site used the custom domain riishavguptaa.com; that domain was not renewed, and its old
+repository only redirected visitors here until it expired.)
 
 The design follows the CMSC 601 lecture "Self-Promotion: Web Pages" (10-second test, conventional
 navigation, research identity statement, citable publications, accessibility, mobile-first testing).
@@ -62,7 +64,7 @@ Calendar reminder: open `_tools/site-check-reminders.ics` once to import it.
 - [ ] Search your name in a private/incognito window
 - [ ] Open the site on your phone, and zoom to 200%
 - [ ] Tab through every link and button with the keyboard — the focus ring must always be visible
-- [ ] Run an accessibility checker: [WAVE](https://wave.webaim.org/) on https://riishavguptaa.com
+- [ ] Run an accessibility checker: [WAVE](https://wave.webaim.org/) on https://riishavrg.github.io
 - [ ] Click every important link
 - [ ] Check the page title, tab icon, and link preview (paste the URL into a LinkedIn or Slack message)
 - [ ] Ask someone to explain what you work on after 10 seconds on the page

@@ -1,21 +1,21 @@
 BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//riishavguptaa.com//site-check//EN
+PRODID:-//riishavrg.github.io//site-check//EN
 CALSCALE:GREGORIAN
 BEGIN:VEVENT
-UID:site-15min-check@riishavguptaa.com
+UID:site-15min-check@riishavrg.github.io
 DTSTAMP:20261007T185203Z
 DTSTART:20261207T100000
 DTEND:20261207T101500
 RRULE:FREQ=YEARLY;BYMONTH=1,5,8,12;BYDAY=1MO
-SUMMARY:Website 15-minute check (riishavguptaa.com)
-DESCRIPTION:15-minute website check (riishavguptaa.com). See README.md in t
- he repo. 1) Nothing stale: no 'N-th year' claims\, News has an item from t
- he last ~6 months\, footer date current. 2) CV PDF and site agree (papers\
- , positions\, dates). 3) Email and every profile/demo link work (run: cd _
- tools && node check_site.mjs https://riishavguptaa.com/). 4) 'To appear' p
- apers that appeared get their DOI link. 5) Contact details current. 6) Upd
- ate 'Last updated' in the footer and lastmod in sitemap.xml.
+SUMMARY:Website 15-minute check (riishavrg.github.io)
+DESCRIPTION:15-minute website check (riishavrg.github.io). See README.md in
+  the repo. 1) Nothing stale: no 'N-th year' claims\, News has an item from
+  the last ~6 months\, footer date current. 2) CV PDF and site agree (paper
+ s\, positions\, dates). 3) Email and every profile/demo link work (run: cd
+  _tools && node check_site.mjs https://riishavrg.github.io/). 4) 'To appea
+ r' papers that appeared get their DOI link. 5) Contact details current. 6)
+  Update 'Last updated' in the footer and lastmod in sitemap.xml.
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Website 15-minute check

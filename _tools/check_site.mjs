@@ -1,6 +1,6 @@
-// check_site.mjs -- automated "Test before deploying" checks (CMSC 601 slide 34) for riishavguptaa.com.
+// check_site.mjs -- automated "Test before deploying" checks (CMSC 601 slide 34) for riishavrg.github.io.
 // Where it sits: run locally before every push; drives your installed Google Chrome, nothing is published.
-// Input:  argv[2] = page to test (default: ../index.html as a file:// URL; or https://riishavguptaa.com/)
+// Input:  argv[2] = page to test (default: ../index.html as a file:// URL; or https://riishavrg.github.io/)
 //         argv[3] = folder for screenshots (default: a temp folder)
 // Output: a printed report -- horizontal overflow per screen width, accessibility violations (axe-core),
 //         keyboard Tab order with focus visibility, status of every link, meta/preview tags -- plus screenshots.

@@ -115,7 +115,7 @@ def main():
     for line in wrap(d, blurb, font(SANS, 30), W - x - 70):          # [L] 70 px right margin keeps text off the edge
         d.text((x, y), line, font=font(SANS, 30), fill=INK_2)
         y += 42                                                      # [L] 42 px line spacing = 1.4 x the 30 px font
-    d.text((x, y + 30), "riishavguptaa.com", font=font(SANS_BOLD, 28), fill=ACCENT)
+    d.text((x, y + 30), "riishavrg.github.io", font=font(SANS_BOLD, 28), fill=ACCENT)
     card.save("images/og-card.png", optimize=True)
     print(f"wrote images/og-card.png: {W}x{H}, {os.path.getsize('images/og-card.png'):,} bytes")
 
