@@ -1,0 +1,113 @@
+{
+ "model_sha": "2e20e764e52690590d64daa1d80f4f39c40a9a9f178f15a90f0eb26d60c28845",
+ "config": {
+  "emb": 16,
+  "hidden": 512,
+  "layers": 3,
+  "dense": 512,
+  "vocab": 98,
+  "outputs": 96,
+  "max_length": 30
+ },
+ "weights": {
+  "file": "lstm.bin",
+  "bytes": 11519168,
+  "sha256": "1824e191bc84288ad0743eb9b9c904d3e367354fed70e108ff22f0ef0317600b",
+  "tensors": [
+   {
+    "name": "input0",
+    "shape": [
+     98,
+     2048
+    ],
+    "offset": 0
+   },
+   {
+    "name": "recurrent0",
+    "shape": [
+     2048,
+     512
+    ],
+    "offset": 200704
+   },
+   {
+    "name": "weight1",
+    "shape": [
+     2048,
+     1024
+    ],
+    "offset": 1249280
+   },
+   {
+    "name": "bias1",
+    "shape": [
+     2048
+    ],
+    "offset": 3346432
+   },
+   {
+    "name": "weight2",
+    "shape": [
+     2048,
+     1024
+    ],
+    "offset": 3348480
+   },
+   {
+    "name": "bias2",
+    "shape": [
+     2048
+    ],
+    "offset": 5445632
+   },
+   {
+    "name": "dense_weight",
+    "shape": [
+     512,
+     512
+    ],
+    "offset": 5447680
+   },
+   {
+    "name": "dense_bias",
+    "shape": [
+     512
+    ],
+    "offset": 5709824
+   },
+   {
+    "name": "out_weight",
+    "shape": [
+     96,
+     512
+    ],
+    "offset": 5710336
+   },
+   {
+    "name": "out_bias",
+    "shape": [
+     96
+    ],
+    "offset": 5759488
+   }
+  ]
+ },
+ "tables": {
+  "general": {
+   "file": "guess_table.bin",
+   "bytes": 4000000,
+   "sha256": "1eb2e2005daf301173d29b6eb7c4a6a720c34dac19465dc6da1c5ac15a376708",
+   "count": 1000000,
+   "draws": 1000000,
+   "max_error": 1.1458177198164776e-06
+  },
+  "policy": {
+   "file": "guess_table_policy.bin",
+   "bytes": 497212,
+   "sha256": "e6368e3a2a32058b0a6d5df035d5b035b141979b77314b3b1bb1539a0f2e6848",
+   "count": 124303,
+   "draws": 4000000,
+   "max_error": 1.481697907479429e-06
+  }
+ }
+}

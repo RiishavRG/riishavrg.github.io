@@ -270,16 +270,21 @@ details pre {
 
 /* ===================================================== 10b. Desktop page grid (960 px and wider) */
 @media (min-width: 960px) {                     /* [L] 960 px, not 760: below this a 216 px heading column leaves the content too narrow */
-  .site-header { position: sticky; top: 0; z-index: 10; }  /* [L] sticky only here, where the header is always one 65 px row */
+  .site-header { position: sticky; top: 0; z-index: 10; }  /* [L] sticky only here: one 65 px row from 1150 px; two rows (93 px) at 960-1149 px since the Password Study tab (see 10c) */
   html { scroll-padding-top: calc(var(--header-h) + var(--s4)); }  /* [L] 64 px header + 16 px: a jumped-to card's top edge shows just below the header */
   .site-header .wrap { display: grid; grid-template-columns: var(--gutter) minmax(0, 1fr); column-gap: var(--gutter-gap); }  /* [L] name over the photo/heading column, menu over the content column */
-  .nav a { padding: 0 var(--s2); }            /* [L] 8 px sides, not 12: the 7 links need ~588 px and fit one row from 960 px (at 12 px they wrapped, making the sticky header 93 px tall and hiding jump targets) */
+  .nav a { padding: 0 var(--s2); }            /* [L] 8 px sides, not 12: the 7 original links need ~588 px and fit one row from 960 px; with Password Study (8 links) one row needs 1150 px (at 12 px they wrapped, making the sticky header 93 px tall and hiding jump targets) */
   .nav ul { margin-left: calc(-1 * var(--s2)); }  /* [L] cancels the first link's 8 px padding, so "About" starts exactly at the content edge */
   .split { display: grid; grid-template-columns: var(--gutter) minmax(0, 1fr); column-gap: var(--gutter-gap); align-items: start; }  /* [L] heading | content, the same two columns as the hero */
   .split > h2 { font-size: 1.75rem; margin-bottom: 0; }  /* [L] 28 px, not 32: "Publications" fits the 216 px column on one line; no bottom margin because the content sits beside it, not below */
   .split .measure { max-width: none; }          /* [L] every block ends at the column's right edge (~760 px, ~80 characters) instead of some stopping at 672 px */
   .project { grid-template-columns: 16rem minmax(0, 1fr); }  /* [L] 256 px figure beside ~460 px of text */
   .project-figure { aspect-ratio: 4 / 3; }      /* [L] 4:3 (256 x 192), not 16:10 (256 x 160): two of the three figures are near-square, so they fill more of the frame and the blank strip under the figure shrinks */
+}
+
+/* ===================================================== 10c. Two-row header band (960-1149 px) */
+@media (min-width: 960px) and (max-width: 1149px) {  /* [L] 1149 px, measured in headless Chrome: below 1150 px the 8 menu links wrap to a second row */
+  :root { --header-h: 5.8rem; }                    /* [L] 93 px (measured two-row height), not 64: the header's min-height and the anchor-jump offset (10b) grow together, so jumped-to sections are not hidden under the sticky header */
 }
 
 /* ===================================================== 11. Tablets and phones */

@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="description" content="CMSC 491/691 password study: create a password with help from security questions and see how many guesses an attacker would need.">
+
+<title>Password Study</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23333333'/%3E%3Cpath d='M11 15v-3a5 5 0 0 1 10 0v3' fill='none' stroke='white' stroke-width='3'/%3E%3Crect x='8' y='15' width='16' height='11' rx='2' fill='white'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,600&display=swap">
+<link rel="stylesheet" href="style.css">
+<script type="module" src="app.js"></script>
+</head>
+<body>
+<header class="bar">
+  <a class="home" href="../">Rishav Gupta</a>
+  <span class="section">Password Study</span>
+  <span class="status" id="status" role="status">Loading the password checker…</span>
+</header>
+
+<main>
+  <div class="mode" id="mode" role="group" aria-label="Which visit is this?">
+    <button type="button" id="mode-first" aria-pressed="true">First visit</button>
+    <button type="button" id="mode-return" aria-pressed="false">Coming back after a week</button>
+  </div>
+
+  <section class="card" id="intro">
+    <h1>Password Checking Study</h1>
+    <p class="lead">Thank you for taking part. This takes about 5 to 10 minutes.</p>
+
+    <h2>Before you start</h2>
+    <ul>
+      <li><strong>Do not use a real password.</strong> Make up a new one for this study.</li>
+      <li>Do not use the password you create here for any other account.</li>
+      <li>Do not write your password down or save it in your browser. We will ask you to remember it in about a week.</li>
+      <li>Your password needs at least <strong>12 characters</strong> and at least <strong>2 kinds</strong> of characters: lowercase letters, uppercase letters, numbers, symbols.</li>
+    </ul>
+
+    <h2>What you will do</h2>
+    <ol>
+      <li>Answer a security question.</li>
+      <li>Choose: see password ideas built from your answers, or make your own password.</li>
+      <li>Not happy with the ideas? Answer another question, up to 5 in total.</li>
+      <li>Type your password and check it. Change it until it is Strong.</li>
+    </ol>
+    <p class="note" id="privacy">Your password is checked inside your browser.</p>
+
+    <label class="field" for="participant">Your name or participant ID</label>
+    <input id="participant" autocomplete="off">
+    <label class="consent"><input type="checkbox" id="consent"> <span>I agree to take part. I understand my answers and made-up passwords are saved for this class project.</span></label>
+    <p class="error" id="intro-error" role="alert"></p>
+    <button class="primary" id="start" type="button">Next</button>
+    <button id="restart" type="button" hidden>Start over</button>
+  </section>
+
+  <div id="questions"></div>
+
+  <section class="card" id="password-card" hidden>
+    <h2>Make your password</h2>
+    <p class="muted">At least 12 characters and at least 2 kinds of characters. You can use an idea, change it, or make your own. Never use a real password.</p>
+    <div class="password-row">
+      <input id="password" type="password" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Your password">
+      <button id="toggle" type="button" aria-label="Show password">Show</button>
+    </div>
+    <div class="actions">
+      <button class="primary" id="check" type="button">Check password</button>
+      <button id="another" type="button" hidden>Answer another question</button>
+    </div>
+    <div class="result" id="result" aria-live="polite"></div>
+  </section>
+
+  <section class="card" id="finish" hidden>
+    <h2>Thank you!</h2>
+    <p class="lead" id="finish-message"></p>
+    <button class="primary" id="confirm-open" type="button" hidden>Confirm your password</button>
+    <div id="record"></div>
+  </section>
+
+  <dialog id="confirm-dialog" aria-labelledby="confirm-title">
+    <h2 id="confirm-title">Type your password one more time</h2>
+    <p class="muted">This checks that you remember it. Copy and paste are turned off, so please type it.</p>
+    <div class="password-row">
+      <input id="confirm-password" type="password" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Your password">
+      <button id="confirm-toggle" type="button" aria-label="Show password">Show</button>
+    </div>
+    <div class="actions">
+      <button class="primary" id="confirm-check" type="button">Check</button>
+      <button id="confirm-new" type="button" hidden>Create a new password</button>
+      <button class="primary" id="confirm-close" type="button" hidden>Close</button>
+    </div>
+    <div class="result" id="confirm-result" aria-live="polite"></div>
+  </dialog>
+
+  <section class="card" id="return" hidden>
+    <h1>Memory check</h1>
+    <p class="lead">Welcome back. Let's see if you remember the password you made last week. Please don't look it up anywhere.</p>
+    <label class="field" for="return-name">Your name or participant ID, the same as last time</label>
+    <input id="return-name" autocomplete="off">
+    <button class="primary" id="return-find" type="button">Next</button>
+    <div id="return-body" aria-live="polite"></div>
+  </section>
+</main>
+
+<template id="question-card">
+  <section class="card question-card">
+    <p class="kicker"></p>
+    <p class="prompt"></p>
+    <input class="answer" autocomplete="off" aria-label="Your answer" placeholder="Your answer">
+    <p class="error answer-error" role="alert"></p>
+    <div class="actions choose">
+      <button class="primary show-ideas" type="button">Show me ideas</button>
+      <button class="own" type="button">Make my own password</button>
+    </div>
+    <div class="ideas" hidden>
+      <h3>Ideas from your answers</h3>
+      <p class="muted ideas-note"></p>
+      <ul class="suggestions"></ul>
+      <div class="actions next">
+        <button class="primary own" type="button">Make my own password</button>
+        <button class="another" type="button">Answer another question</button>
+      </div>
+    </div>
+  </section>
+</template>
+</body>
+</html>
