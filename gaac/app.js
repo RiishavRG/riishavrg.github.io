@@ -22,7 +22,7 @@ function renderQuestions(){
  const visible = showAll || query || category !== 'all' || status !== 'all' ? results : results.slice(0,8);
  $('#question-list').innerHTML=visible.map(card).join('');
  $('#show-more').hidden=visible.length===results.length;
- $('#show-more').textContent=`Show all ${results.length} questions`; 
+ $('#show-more').textContent=`Show all ${results.length} questions`;
  $('#result-count').textContent=`${visible.length < results.length ? `${visible.length} of ` : ''}${results.length} ${results.length===1?'question':'questions'}${category==='all'?' across all topics':` in ${categories[category].toLowerCase()}`}`;
  $('#empty-state').hidden=results.length>0;
  $$('[data-copy]').forEach(b=>b.addEventListener('click',async()=>{const url=new URL(location.href);url.hash=b.dataset.copy;try{await navigator.clipboard.writeText(url.href);toast('Question link copied');}catch{toast('Select and copy the address in your browser');location.hash=b.dataset.copy;}}));
@@ -39,4 +39,3 @@ let toastTimer;function toast(message){$('#toast').textContent=message;$('#toast
 
 const milestones=[['Dec 2, 2026','Appointment-template feedback','Additional comments from graduate program directors.'],['Dec 18, 2026','Written office responses','Agreed target for Graduate School and Student Affairs reports.'],['Jan–Feb 2027','Student communication','January sharing; Aetna session being arranged for February.'],['Spring 2027','Review & report back','Stipend audit begins; clearer Pay Bridge update expected.'],['Apr 15, 2027','Next Meet & Confer','Housing-affordability response and follow-up on open issues.']];
 $('#milestones').innerHTML=milestones.map(([date,title,desc])=>`<article class="milestone"><time>${date}</time><h3>${title}</h3><p>${desc}</p></article>`).join('');
-
