@@ -6,9 +6,9 @@
 .brand-gaac{width:108px;height:58px}
 .brand-divider{width:1px;height:34px;background:#dedbe5}
 .guide-header nav{gap:24px;min-height:98px}
-.guide-header .nav-links{gap:20px}
+.guide-header .nav-links{gap:20px;margin-left:auto}
 .guide-header .nav-links a{font-size:14px;white-space:nowrap}
-.motion-toggle{flex-shrink:0}
+
 .intro-duo{grid-template-columns:1fr 1fr;align-items:stretch}
 .animated-campus{height:auto;min-height:450px;align-self:stretch}
 .watch-card{display:flex;flex-direction:column;height:100%}
@@ -85,9 +85,9 @@
  .brand-gsa{width:34%;height:50px}
  .brand-gaac{width:24%;height:50px}
  .brand-divider{height:28px}
- .guide-header .nav-links{display:flex;flex:1;justify-content:flex-start;gap:22px}
+ .guide-header .nav-links{display:flex;flex:1;justify-content:flex-end;gap:22px}
  .guide-header .nav-links a{font-size:13px}
- .motion-toggle{font-size:12px;padding:7px 12px}
+
  .intro-duo{grid-template-columns:1fr;grid-auto-rows:1fr}
  .mini-president{top:8%}
  .mini-provost,.mini-affairs{top:44%}

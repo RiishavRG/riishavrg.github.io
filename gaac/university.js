@@ -83,9 +83,9 @@ function showExample(id){
  $('#example-role').onclick=()=>{showRole(e.role);$('#understand').scrollIntoView({behavior:document.body.classList.contains('motion-off')?'auto':'smooth'});};
 }
 $$('[data-example]').forEach(b=>b.onclick=()=>showExample(b.dataset.example));showExample('college');
-const motion=$('#motion-toggle');const reduce=window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
-function setMotion(off){document.body.classList.toggle('motion-off',off);motion.setAttribute('aria-pressed',String(off));motion.textContent=off?'Motion off':'Motion on';}
-setMotion(!!reduce);motion.onclick=()=>setMotion(!document.body.classList.contains('motion-off'));
+const motionPreference=window.matchMedia?.('(prefers-reduced-motion: reduce)');
+function syncMotionPreference(){document.body.classList.toggle('motion-off',!!motionPreference?.matches);}
+syncMotionPreference();motionPreference?.addEventListener?.('change',syncMotionPreference);
 function connectIllustration(){
  const canvas=$('.animated-campus'),svg=$('.mini-lines');if(!canvas||!svg)return;
  const base=canvas.getBoundingClientRect();if(!base.width)return;
