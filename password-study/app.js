@@ -461,12 +461,12 @@ function returnMessage(text, className = "") {
   $("return-body").replaceChildren(el("p", className, text));
 }
 
-function showTry(name, number, hint, total, hintNumber) {
+function showTry(name, number, hints, total) {
   const box = el("div", "recall");
   box.append(el("h2", "", `Try ${number} of ${total}`));
-  if (hint) {
+  for (const [index, hint] of hints.entries()) {
     const cue = el("div", "question");
-    cue.append(el("p", "kicker", `Hint: security question ${hintNumber} from your first visit`), el("p", "prompt", hint));
+    cue.append(el("p", "kicker", `Hint: security question ${index + 1} from your first visit`), el("p", "prompt", hint));
     box.append(cue);
   }
   const input = el("input");
@@ -503,7 +503,7 @@ function showTry(name, number, hint, total, hintNumber) {
       if (r.correct) return showMessage(result, "Correct! You remembered your password. Thank you, you are done.", "next");
       if (r.done) return showMessage(result, "That was not it. Thank you for taking part. This result helps our study too.", "next");
       showMessage(result, "Not quite. Try again with the next security question as a hint.", "next");
-      showTry(name, r.next_try, r.hint, r.max_tries, r.hint_number);
+      showTry(name, r.next_try, r.hints, r.max_tries);
     } catch (error) {
       showMessage(result, `Could not reach the study server (${error.message}). Please try again.`);
     } finally {
@@ -528,7 +528,7 @@ async function findMe() {
     $("return-name").disabled = true;
     $("return-find").hidden = true;
     $("return-body").replaceChildren();
-    showTry(name, r.next_try, r.hint, r.max_tries, r.hint_number);
+    showTry(name, r.next_try, r.hints, r.max_tries);
   } catch (error) {
     returnMessage(`Could not reach the study server (${error.message}). Check your internet and try again.`, "error");
   } finally {
