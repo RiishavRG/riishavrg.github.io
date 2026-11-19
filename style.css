@@ -272,7 +272,7 @@ details pre {
 @media (min-width: 960px) {                     /* [L] 960 px, not 760: below this a 216 px heading column leaves the content too narrow */
   .site-header { position: sticky; top: 0; z-index: 10; }  /* [L] sticky only here: one 65 px row from 1150 px; two rows (93 px) at 960-1149 px since the Password Study tab (see 10c) */
   html { scroll-padding-top: calc(var(--header-h) + var(--s4)); }  /* [L] 64 px header + 16 px: a jumped-to card's top edge shows just below the header */
-  .site-header .wrap { display: grid; grid-template-columns: var(--gutter) minmax(0, 1fr); column-gap: var(--gutter-gap); }  /* [L] name over the photo/heading column, menu over the content column */
+  .site-header .wrap { display: grid; grid-template-columns: 9rem minmax(0, 1fr); column-gap: var(--gutter-gap); }  /* [L] The compact name column keeps GAAC beside Password Study on wide screens. */
   .nav a { padding: 0 var(--s2); }            /* [L] 8 px sides, not 12: the 7 original links need ~588 px and fit one row from 960 px; with Password Study (8 links) one row needs 1150 px (at 12 px they wrapped, making the sticky header 93 px tall and hiding jump targets) */
   .nav ul { margin-left: calc(-1 * var(--s2)); }  /* [L] cancels the first link's 8 px padding, so "About" starts exactly at the content edge */
   .split { display: grid; grid-template-columns: var(--gutter) minmax(0, 1fr); column-gap: var(--gutter-gap); align-items: start; }  /* [L] heading | content, the same two columns as the hero */

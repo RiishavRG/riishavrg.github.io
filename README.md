@@ -15,6 +15,7 @@ navigation, research identity statement, citable publications, accessibility, mo
 | File | What it is |
 |---|---|
 | `index.html` | The whole site (one page, sections linked from the top menu) |
+| `gaac/` | Public GAAC student guide, video, question cards, contact routes and linked meeting records |
 | `style.css` | All styling; colours and spacing are variables at the top |
 | `404.html` | Page shown for any broken link |
 | `Rishav_Gupta_CV.pdf` | The CV the "CV (PDF)" links serve — **keep this file name** so old links keep working |
@@ -68,3 +69,12 @@ Calendar reminder: open `_tools/site-check-reminders.ics` once to import it.
 - [ ] Click every important link
 - [ ] Check the page title, tab icon, and link preview (paste the URL into a LinkedIn or Slack message)
 - [ ] Ask someone to explain what you work on after 10 seconds on the page
+
+## GAAC guide
+
+The GAAC navigation tab opens [the student guide](https://riishavrg.github.io/gaac/).
+Its static runtime files live in `gaac/`; all resources use paths relative to that directory.
+The editable working project is `../GAAC/sites/gaac-guide/`. Copy its current runtime files and
+referenced assets when updating the guide; keep research notes, tooling, and raw survey files out
+of this public repository. Preserve the deployed canonical/social metadata and return-home link.
+Push updates to `main` for the existing GitHub Pages deployment.

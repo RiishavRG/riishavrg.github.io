@@ -1,1 +1,4 @@
 password-study/model/*.bin binary
+
+# Keep the guide’s source documents byte-for-byte intact.
+gaac/assets/*.pdf binary
