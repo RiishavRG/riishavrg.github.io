@@ -2,7 +2,6 @@ import { SHEET_URL } from "./config.js";
 import { ORDER, QUESTIONS } from "./questions.js";
 
 const MAX_QUESTIONS = 5;
-const RECALL_TRIES = 2;
 const KEEP_FINISHED_MS = 2 * 60 * 60 * 1000;
 const STORE = "password-study-v2";
 const OUTBOX = "password-study-outbox-v2";
@@ -462,12 +461,12 @@ function returnMessage(text, className = "") {
   $("return-body").replaceChildren(el("p", className, text));
 }
 
-function showTry(name, number, hint) {
+function showTry(name, number, hint, total, hintNumber) {
   const box = el("div", "recall");
-  box.append(el("h2", "", `Try ${number} of ${RECALL_TRIES}`));
+  box.append(el("h2", "", `Try ${number} of ${total}`));
   if (hint) {
     const cue = el("div", "question");
-    cue.append(el("p", "kicker", "Hint: your first security question last week"), el("p", "prompt", hint));
+    cue.append(el("p", "kicker", `Hint: security question ${hintNumber} from your first visit`), el("p", "prompt", hint));
     box.append(cue);
   }
   const input = el("input");
@@ -503,8 +502,8 @@ function showTry(name, number, hint) {
       if (!("correct" in r)) return showMessage(result, "You already did your memory check. Thank you!", "next");
       if (r.correct) return showMessage(result, "Correct! You remembered your password. Thank you, you are done.", "next");
       if (r.done) return showMessage(result, "That was not it. Thank you for taking part. This result helps our study too.", "next");
-      showMessage(result, "Not quite. Here is a hint for your last try.", "next");
-      showTry(name, number + 1, r.hint);
+      showMessage(result, "Not quite. Try again with the next security question as a hint.", "next");
+      showTry(name, r.next_try, r.hint, r.max_tries, r.hint_number);
     } catch (error) {
       showMessage(result, `Could not reach the study server (${error.message}). Please try again.`);
     } finally {
@@ -529,7 +528,7 @@ async function findMe() {
     $("return-name").disabled = true;
     $("return-find").hidden = true;
     $("return-body").replaceChildren();
-    showTry(name, RECALL_TRIES - r.tries_left + 1, r.hint);
+    showTry(name, r.next_try, r.hint, r.max_tries, r.hint_number);
   } catch (error) {
     returnMessage(`Could not reach the study server (${error.message}). Check your internet and try again.`, "error");
   } finally {
